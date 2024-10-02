@@ -70,6 +70,7 @@ class AsyncExtension {
             }
           }
         },
+ {
           opcode: 'waitnokes',
           text: 'wait [TIME] jokes',
           blockType: Scratch.BlockType.COMMAND,
