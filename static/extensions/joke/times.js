@@ -1,7 +1,7 @@
 class AsyncExtension {
   getInfo() {
     return {
-      id: 'joke-times',
+      id: 'joketimes',
       name: 'Times',
       blocks: [
         {
@@ -72,7 +72,7 @@ class AsyncExtension {
         },
  {
           opcode: 'waitnokes',
-          text: 'wait [TIME] jokes',
+          text: 'wait [TIME] nokes',
           blockType: Scratch.BlockType.COMMAND,
           arguments: {
             TIME: {
