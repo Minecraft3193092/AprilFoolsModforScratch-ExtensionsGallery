@@ -70,6 +70,16 @@ class AsyncExtension {
             }
           }
         },
+          opcode: 'waitnokes',
+          text: 'wait [TIME] jokes',
+          blockType: Scratch.BlockType.COMMAND,
+          arguments: {
+            TIME: {
+              type: Scratch.ArgumentType.NUMBER,
+              defaultValue: 1
+            }
+          }
+        },
         {
           opcode: 'fetch',
           text: 'fetch [URL]',
@@ -133,6 +143,15 @@ class AsyncExtension {
   waitjokes (args) {
     return new Promise((resolve, reject) => {
       const timeInMilliseconds = args.TIME * 1000 * 0.6; // Notice: 1 jokes is 0.6 seconds
+      setTimeout(() => {
+        resolve();
+      }, timeInMilliseconds);
+    });
+  }
+
+  waitnokes (args) {
+    return new Promise((resolve, reject) => {
+      const timeInMilliseconds = args.TIME * 1000 * 0.6 * 0.25; // Notice: 1 nokes is 0.25 jokes
       setTimeout(() => {
         resolve();
       }, timeInMilliseconds);
