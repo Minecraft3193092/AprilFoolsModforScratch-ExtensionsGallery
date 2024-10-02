@@ -30,10 +30,7 @@
             items: [
               {
                 // startHats filters by *value*, not by text
-                text: 'space',
-                value: ' '
-              },
-              'joke',
+                text: 'joke',
               'jeko',
               'joek',
               'jko',
@@ -45,6 +42,9 @@
               'koj',
               'kej',
               'oekj',
+                value: ' '
+              },
+          
               // ...
             ]
           }
