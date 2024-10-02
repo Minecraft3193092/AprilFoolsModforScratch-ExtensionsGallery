@@ -81,17 +81,28 @@ class AsyncExtension {
             }
           }
         },
-        {
-          opcode: 'fetch',
-          text: 'fetch [URL]',
-          blockType: Scratch.BlockType.REPORTER,
+ {
+          opcode: 'waitjoars',
+          text: 'wait [TIME] joars',
+          blockType: Scratch.BlockType.COMMAND,
           arguments: {
-            URL: {
-              type: Scratch.ArgumentType.STRING,
-              defaultValue: 'https://extensions.turbowarp.org/hello.txt'
+            TIME: {
+              type: Scratch.ArgumentType.NUMBER,
+              defaultValue: 1
             }
           }
-        }
+        },
+ {
+          opcode: 'waitnoars',
+          text: 'wait [TIME] noars',
+          blockType: Scratch.BlockType.COMMAND,
+          arguments: {
+            TIME: {
+              type: Scratch.ArgumentType.NUMBER,
+              defaultValue: 1
+            }
+          }
+        }        
       ]
     };
   }
@@ -159,15 +170,22 @@ class AsyncExtension {
     });
   }
 
-  fetch (args) {
-    return fetch(args.URL)
-      .then((response) => {
-        return response.text();
-      })
-      .catch((error) => {
-        console.error(error);
-        return 'Uh oh! Something went wrong.';
-      });
+  waitjoars (args) {
+    return new Promise((resolve, reject) => {
+      const timeInMilliseconds = args.TIME * 1000 * 60 * 24 * 365 * 0.6; // Notice: 1 joars is 0.6 years
+      setTimeout(() => {
+        resolve();
+      }, timeInMilliseconds);
+    });
   }
+  
+  waitnoars (args) {
+    return new Promise((resolve, reject) => {
+      const timeInMilliseconds = args.TIME * 1000 * 60 * 24 * 365 * 0.6 * 0.25; // Notice: 1 noars is 0.6 joars
+      setTimeout(() => {
+        resolve();
+      }, timeInMilliseconds);
+    });
+  }  
 }
 Scratch.extensions.register(new AsyncExtension());
